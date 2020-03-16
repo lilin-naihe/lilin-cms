@@ -25,7 +25,13 @@ import com.lilin.cms.service.ChannelService;
 import com.lilin.cms.service.CollectService;
 import com.lilin.cms.service.CommentService;
 import com.lilin.cms.service.SlideService;
-
+/**
+ * 
+ * @ClassName: IndexController 
+ * @Description: 系统首页入口
+ * @author: asus
+ * @date: 2020年3月16日 上午10:18:04
+ */
 @Controller
 public class IndexController {
 
@@ -70,7 +76,9 @@ public class IndexController {
 		// 如果栏目为空，说明没有点击左侧栏目
 		if (article.getChannelId() == null) {
 			article.setHot(1);
-
+            /**
+             * 轮播图
+             */
 			List<Slide> slides = slideService.selects();
 			m.addAttribute("slides", slides);
 		}
@@ -79,7 +87,7 @@ public class IndexController {
 				.selects(article, page, pageSize);
 		m.addAttribute("info", info);
 
-		// 右侧文章
+		// 右侧10篇文章
 		Article article2 = new Article();
 		article2.setStatus(1);
 		article2.setDeleted(0);
@@ -88,20 +96,32 @@ public class IndexController {
 		m.addAttribute("lastArticles", lastArticles);
 		return "index/index";
 	}
-
+    /**
+     * 
+     * @Title: articleDetail 
+     * @Description: 文章详情
+     * @param session
+     * @param id
+     * @param m
+     * @param page
+     * @param pageSize
+     * @return
+     * @return: String
+     */
 	@RequestMapping("articleDetail")
 	public String articleDetail(HttpSession session, Integer id, Model m,
 			@RequestParam(defaultValue = "1") Integer page,
 			@RequestParam(defaultValue = "4") Integer pageSize) {
 		Article article = articleService.select(id);
 		m.addAttribute("article", article);
+		//查询当前文章的评论信息
 		PageInfo<Comment> info = commentService
 				.selects(article, page, pageSize);
 		// 查询所有文章评论
 		PageInfo<Article> info2 = commentService.selectsByCommentNum(1, 10);
 		m.addAttribute("info", info);
 		m.addAttribute("info2", info2);
-
+       //查询文章是否被收藏
 		User user = (User) session.getAttribute("user");
 		Collect collect = null;
 		if (null != user) {// 如果用户已经登录，则查询是否没收藏过

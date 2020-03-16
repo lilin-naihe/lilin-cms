@@ -46,6 +46,14 @@ public class MyController {
 		
 		return "my/index";
 	}
+	/**
+	 * 
+	 * @Title: 单个文章内容 
+	 * @Description: TODO
+	 * @param id
+	 * @return
+	 * @return: Article
+	 */
 	@ResponseBody
 	@RequestMapping("articleDetail")
 	public Article articleDetail(Integer id){
@@ -53,7 +61,17 @@ public class MyController {
 		
 	}
 	
-	
+	/**
+	 * 
+	 * @Title: articles 
+	 * @Description: 我的文章
+	 * @param m
+	 * @param session
+	 * @param page
+	 * @param pageSize
+	 * @return
+	 * @return: String
+	 */
 	
 	@RequestMapping("articles")
 	public String articles(Model m,HttpSession session,@RequestParam(defaultValue="1")Integer page,@RequestParam(defaultValue="4")Integer pageSize){
@@ -64,7 +82,13 @@ public class MyController {
 		m.addAttribute("info", info);
 		return "my/articles";
 	}
-	
+	/**
+	 * 
+	 * @Title: publish 
+	 * @Description: 去发布文章
+	 * @return
+	 * @return: String
+	 */
 	@GetMapping("publish")
 	public String publish(){
 		
@@ -97,13 +121,14 @@ public class MyController {
 				e.printStackTrace();
 			}
 		}
+		//文章初始化数据
 		User user = (User) session.getAttribute("user");
-		article.setUserId(user.getId());//没有登录
+		article.setUserId(user.getId());//发布人
 		article.setCreated(new Date());
 		article.setHits(0);//点击量默认0
 		article.setDeleted(0);//默认没删除
 		article.setHot(0);//默认非热门
 		article.setStatus(0);//默认待审核
-		return service.insert(article)>0;
+		return service.insert(article)>0;//增加文章
 	}
 }

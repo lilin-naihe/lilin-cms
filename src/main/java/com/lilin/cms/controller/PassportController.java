@@ -14,11 +14,19 @@ import com.lilin.cms.domain.User;
 import com.lilin.cms.service.UserService;
 import com.lilin.cms.util.CMSException;
 import com.lilin.cms.util.Result;
-
+/**
+ * 
+ * @ClassName: PassportController 
+ * @Description: 系统的注册入口
+ * @author: asus
+ * @date: 2020年3月16日 上午10:21:55
+ */
 @RequestMapping("passport")
 @Controller
 public class PassportController {
-
+    /**
+     * 去注册
+     */
 	@Resource
 	private UserService service;
 	@GetMapping("reg")
@@ -26,7 +34,7 @@ public class PassportController {
 		
 		return "passport/reg";
 	}
-	
+	//执行注册
 	@PostMapping("reg")
 	@ResponseBody
 	public Result<User> reg(User user,Model model){
@@ -47,17 +55,38 @@ public class PassportController {
 		}
 		return result;
 	}
-	
+	/**
+	 * 
+	 * @Title: login 
+	 * @Description: 去登录 普通用户
+	 * @return
+	 * @return: String
+	 */
 	@GetMapping("login")
 	public String login(){
 		return "passport/login";
 	}
-	
+	/**
+	 * 
+	 * @Title: adminLogin 
+	 * @Description: 去登录 管理员用户
+	 * @return
+	 * @return: String
+	 */
 	@GetMapping("admin/login")
 	public String adminLogin(){
 		return "passport/adminLogin";
 	}
-	
+	/**
+	 * 
+	 * @Title: login 
+	 * @Description: 执行登录
+	 * @param formUser
+	 * @param model
+	 * @param session
+	 * @return
+	 * @return: Result<User>
+	 */
 	@PostMapping("login")
 	@ResponseBody
 	public Result<User> login(User formUser,Model model,HttpSession session){
