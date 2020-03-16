@@ -49,7 +49,6 @@ public class IndexController {
 
 	@Resource
 	private CollectService collectService;
-
 	/**
 	 * 
 	 * @Title: index

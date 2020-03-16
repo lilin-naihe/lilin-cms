@@ -129,5 +129,4 @@ public class PassportController {
 	public boolean checkName(String username){
 		return service.selectByUsername(username)==null;
 	}
-	
 }

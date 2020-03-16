@@ -40,7 +40,6 @@ public class AdminController {
 		
 		return "admin/index";
 	}
-	
 	/**
 	 * 
 	 * @Title: users 

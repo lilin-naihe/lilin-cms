@@ -60,7 +60,6 @@ public class MyController {
 		return service.select(id);
 		
 	}
-	
 	/**
 	 * 
 	 * @Title: articles 
