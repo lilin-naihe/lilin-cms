@@ -8,6 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 视窗 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="${article.keywords }">
+<meta name="original" content="${article.original }">
 <title>${article.title }</title>
 <link href="<%=request.getContextPath()%>/resource/bootstrap.min.css"
 	rel="stylesheet" type="text/css">

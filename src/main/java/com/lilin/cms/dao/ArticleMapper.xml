@@ -9,8 +9,8 @@
          a.id=#{id}
      </select>
      <insert id="insert">
-         insert into cms_article(title,content,picture,channel_id,category_id,user_id,hits,hot,status,deleted,created,updated,summary)
-         values (#{title},#{content},#{picture},#{channelId},#{categoryId},#{userId},#{hits},#{hot},#{status},#{deleted},#{created},#{updated},#{summary})
+         insert into cms_article(title,content,picture,channel_id,category_id,user_id,hits,hot,status,deleted,created,updated,summary,keywords,original)
+         values (#{title},#{content},#{picture},#{channelId},#{categoryId},#{userId},#{hits},#{hot},#{status},#{deleted},#{created},#{updated},#{summary},#{keywords},#{original})
      </insert>
      <resultMap type="Article" id="articleResultMap">
      <!-- 主键 -->
@@ -27,7 +27,9 @@
      <result column="deleted" property="deleted"/> 
      <result column="created" property="created"/> 
      <result column="updated" property="updated"/> 
-     <result column="summary" property="summary"/> 
+     <result column="summary" property="summary"/>
+     <result column="keywords" property="keywords"/> 
+     <result column="original" property="original"/>
      
      <association property="user" javaType="User">
        <id column="user_id" property="id"/>

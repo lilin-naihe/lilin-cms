@@ -42,6 +42,14 @@ String htmlData = request.getParameter("content1") != null ? request.getParamete
 	       <label for="title">文章标题</label>
 	       <input type="text" id="title" name="title" class="form-control form-control-sm col-sm-10" style="width: 858px">
 	    </div>
+	    <div class="form-group">
+	       <label for="title">关键词</label>
+	       <input type="text" id="keywords" name="keywords" class="form-control form-control-sm col-sm-10" style="width: 858px">
+	    </div>
+	    <div class="form-group">
+	       <label for="title">来源</label>
+	       <input type="text" id="original" name="original" class="form-control form-control-sm col-sm-10" style="width: 858px">
+	    </div>
 	    <div class="form-group form-inline">
 	       <label for="title">所属栏目</label>
 	       <select name="channelId" class="form-control form-control-sm" id="channels">
